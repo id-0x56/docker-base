@@ -1,9 +1,8 @@
 FROM alpine:latest
 
-ARG USERNAME=user
+ARG USERNAME=alpine
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
-
 RUN addgroup --system --gid $USER_GID $USERNAME \
     && adduser --system --uid $USER_UID --ingroup $USERNAME $USERNAME
 
