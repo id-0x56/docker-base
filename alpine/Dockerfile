@@ -8,11 +8,13 @@ RUN addgroup --system --gid $USER_GID $USERNAME \
 
 ENV TZ=Europe/London
 RUN apk add --no-cache tzdata \
+    && rm -rf /var/cache/apk/* /var/tmp/* \
     && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && echo $TZ > /etc/timezone
 
 # ENV TZ=Europe/London
 # RUN apk add --no-cache alpine-conf \
+#     && rm -rf /var/cache/apk/* /var/tmp/* \
 #     && setup-timezone -z $TZ
 
 USER $USERNAME
